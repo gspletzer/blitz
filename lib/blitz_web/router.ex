@@ -17,9 +17,7 @@ defmodule BlitzWeb.Router do
   scope "/", BlitzWeb do
     pipe_through :browser
 
-    # get "/", PageController, :home
-    live("/login", LoginLive)
-    live("/stats", StatsLive)
+    live("/", LoginLive)
   end
 
   # Other scopes may use custom stacks.

@@ -35,8 +35,15 @@ defmodule Blitz.MatchWorker do
 
     new_match_id = List.first(match_list)
 
-    if new_match_id != match_id && match_id != "",
-      do: Logger.info("Summoner #{name} completed match #{new_match_id} ")
+    if new_match_id != match_id && match_id != "" do
+      Logger.info("Summoner #{name} completed match #{new_match_id}")
+
+      Phoenix.PubSub.broadcast(
+        Blitz.PubSub,
+        "new match",
+        {:new_match_found, [name, new_match_id]}
+      )
+    end
 
     next_run_time = DateTime.utc_now() |> DateTime.add(60)
 

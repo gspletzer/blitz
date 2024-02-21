@@ -39,15 +39,21 @@
     </div>
   <% else %>
     <div>
-      Welcome back <%= @summoner.name %>
+      <p class="mt-10 mb-10 justify-center text-xl font-bold">
+        Welcome back <i class="text-indigo-600"><%= @summoner.name %></i>!
+      </p>
     </div>
     <div>
-      Recent opponents:
+      <p class="mb-2 text-xl font-bold">
+        Recent opponents:
+      </p>
     </div>
     <div>
-      <%= for [_id, participant] <- @participants do %>
-        <div><%= participant %></div>
-      <% end %>
+      <ul>
+        <%= for [_id, participant] <- @participants do %>
+          <li class="text-md"><%= participant %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 </div>

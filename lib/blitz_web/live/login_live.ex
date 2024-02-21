@@ -3,6 +3,10 @@ defmodule BlitzWeb.LoginLive do
   import BlitzWeb.CoreComponents
 
   def mount(_params, _session, socket) do
+    if connected?(socket) do
+      Phoenix.PubSub.subscribe(Blitz.PubSub, "new match")
+    end
+
     new_entry = Blitz.new_entry()
 
     {:ok, assign(socket, :form, to_form(new_entry)) |> assign(:summoner, %{})}
@@ -23,5 +27,9 @@ defmodule BlitzWeb.LoginLive do
            "Something went wrong fetching summoner information. Please try again."
          )}
     end
+  end
+
+  def handle_info({:new_match_found, [player, id]}, socket) do
+    {:noreply, put_flash(socket, :info, "Summoner #{player} completed match #{id}")}
   end
 end
