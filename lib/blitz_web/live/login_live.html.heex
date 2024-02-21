@@ -1,1 +1,53 @@
+<div class="main">
+  <header class="flex-direction column text-center">
+    <h1 class="text-6xl font-bold leading-normal mt-3 mb-0 text-indigo-600">
+      Blitz Stats
+    </h1>
+  </header>
+  <%= if @summoner == %{} do %>
+    <div class="options">
+      <.simple_form for={@form} phx-submit="login">
+        <.input field={@form[:summoner]} type="text" label="Summoner Name" />
+        <.input
+          field={@form[:region]}
+          type="select"
+          label="Region"
+          options={[
+            "North America": "na1",
+            Brazil: "br1",
+            "Europe Nordic & East": "eun1",
+            "Europe West": "euw1",
+            Japan: "jp1",
+            "South Korea": "kr",
+            "Latin America North": "la1",
+            "Latin America South": "la2",
+            Oceania: "oc1",
+            Phillippines: "ph2",
+            Russia: "ru",
+            Singapore: "sg2",
+            Thailand: "th2",
+            Turkey: "tr1",
+            Taiwan: "tw2",
+            Vietnam: "vn2"
+          ]}
+        />
 
+        <:actions>
+          <.button>See Stats</.button>
+        </:actions>
+      </.simple_form>
+    </div>
+  <% else %>
+    <div>
+      Welcome back <%= @summoner.name %>
+    </div>
+    <div>
+      Recent opponents:
+    </div>
+    <div>
+      <%= for [_id, participant] <- @participants do %>
+        <div><%= participant %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

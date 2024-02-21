@@ -12,6 +12,8 @@ defmodule Blitz.Application do
       BlitzWeb.Telemetry,
       # Start the Ecto repository
       Blitz.Repo,
+      # Start instance of Oban
+      {Oban, Application.fetch_env!(:blitz, Oban)},
       # Start the PubSub system
       {Phoenix.PubSub, name: Blitz.PubSub},
       # Start Finch

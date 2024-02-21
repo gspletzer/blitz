@@ -35,3 +35,6 @@ blitz-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Ignore environment variables
+.env
+
