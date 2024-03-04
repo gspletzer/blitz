@@ -16,7 +16,7 @@ Now that that's done, you should be ready to use the app!
 
 ## Running Blitz in a browser
 
-If you want to utilize the UI friendly version of the app, run `mix phx.server` in your terminal and then visit [`localhost:4000/login`](http://localhost:4000) from your browser.
+If you want to utilize the UI friendly version of the app, run `mix phx.server` in your terminal and then visit [`localhost:4000/`](http://localhost:4000) from your browser.
 
 You should see the landing page which will have an input boxes to submit the summoner name and designate the region you want to collect information for. If you don't have your own summoner name to test it out with, you can use `TSM Bjergsen` with the `North America` region selected.
 
